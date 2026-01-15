@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  align-items: center;
+  background: #ffffff !important; /* Чистий білий фон */
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 0 40px !important; /* Більше відступів з боків */
+  height: 64px;
+  line-height: 64px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Легка тінь для об'єму */
+}
+
+.logo {
+  font-weight: 800; /* Жирніший шрифт */
+  margin-right: 48px;
+  font-size: 20px;
+  color: #1677ff; /* Основний колір Ant Design */
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.8;
+  color: #4096ff;
+}
+
+.menu {
+  flex: 1;
+  border-bottom: none !important; /* Прибираємо стандартну лінію AntD */
+  font-size: 15px;
+  font-weight: 500;
+  background: transparent !important;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 576px) {
+  .header {
+    padding: 0 20px !important;
+  }
+
+  .logo {
+    margin-right: 20px;
+    font-size: 16px;
+  }
+}

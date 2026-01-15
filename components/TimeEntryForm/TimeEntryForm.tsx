@@ -5,15 +5,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { timeEntrySchema, type TimeEntryFormValues } from "@/lib/validations";
 import { useState } from "react";
-import { Form, Button, Card, Alert, Typography } from "antd";
+import { Form, Button, Card, Alert, Typography, message } from "antd";
 import dayjs from "dayjs";
 import { FormFields } from "../FormFields/FormFields";
 import css from "./TimeEntryForm.module.css";
+import { useRouter } from "next/navigation";
 
 const { Title } = Typography;
 
 interface TimeEntryFormProps {
-  onEntryAdded: () => void;
+  onEntryAdded?: () => void;
 }
 
 export default function TimeEntryForm({ onEntryAdded }: TimeEntryFormProps) {
@@ -34,17 +35,30 @@ export default function TimeEntryForm({ onEntryAdded }: TimeEntryFormProps) {
     },
   });
 
+  const router = useRouter();
+
+  const [messageApi, contextHolder] = message.useMessage();
+
   const onSubmit = async (data: TimeEntryFormValues) => {
     try {
       setServerError(null);
       await axios.post("/api/entries", data);
+      setTimeout(() => {
+        messageApi.success("Time entry saved successfully!");
+      }, 0);
       reset({
         date: dayjs().format("YYYY-MM-DD"),
         project: "",
         hours: 0,
         description: "",
       });
-      onEntryAdded();
+      if (onEntryAdded) {
+        onEntryAdded();
+      }
+      setTimeout(() => {
+        router.push("/history");
+        router.refresh();
+      }, 1500);
     } catch (error: unknown) {
       const message = axios.isAxiosError(error)
         ? error.response?.data?.error
@@ -54,32 +68,36 @@ export default function TimeEntryForm({ onEntryAdded }: TimeEntryFormProps) {
   };
 
   return (
-    <Card variant="outlined" className={css.card}>
-      <Title level={4} className={css.title}>
-        Add Time Entry
-      </Title>
+    <>
+      {contextHolder}
 
-      {serverError && (
-        <Alert
-          title={serverError}
-          type="error"
-          showIcon
-          className={css.alert}
-        />
-      )}
+      <Card variant="outlined" className={css.card}>
+        <Title level={4} className={css.title}>
+          Add Time Entry
+        </Title>
 
-      <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-        <FormFields control={control} errors={errors} />
-        <Button
-          type="primary"
-          htmlType="submit"
-          loading={isSubmitting}
-          block
-          size="large"
-        >
-          Save Entry
-        </Button>
-      </Form>
-    </Card>
+        {serverError && (
+          <Alert
+            title={serverError}
+            type="error"
+            showIcon
+            className={css.alert}
+          />
+        )}
+
+        <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
+          <FormFields control={control} errors={errors} />
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={isSubmitting}
+            block
+            size="large"
+          >
+            Save Entry
+          </Button>
+        </Form>
+      </Card>
+    </>
   );
 }

@@ -4,15 +4,32 @@
   margin: 0 auto;
 }
 
+.centerText {
+  text-align: center;
+}
+
+.subTitle {
+  font-size: 18px !important;
+  color: #666 !important;
+}
+
+.buttonGroup {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
 .primaryButton {
   background-color: #1677ff;
   color: white;
-  padding: 8px 24px;
+  padding: 10px 24px;
   border-radius: 6px;
   text-decoration: none;
   font-size: 16px;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   transition: background 0.3s;
 }
 
@@ -24,16 +41,29 @@
 .secondaryButton {
   border: 1px solid #d9d9d9;
   color: rgba(0, 0, 0, 0.88);
-  padding: 8px 24px;
+  padding: 10px 24px;
   border-radius: 6px;
   text-decoration: none;
   font-size: 16px;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   transition: all 0.3s;
 }
 
 .secondaryButton:hover {
   border-color: #1677ff;
   color: #1677ff;
+}
+
+.infoCard {
+  text-align: center;
+  background: #f9f9f9;
+  height: 100%;
+}
+
+.icon {
+  font-size: 32px;
+  color: #1677ff;
+  margin-bottom: 16px;
 }

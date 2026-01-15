@@ -1,10 +1,9 @@
-import TrackerContainer from "@/components/TrackerContainer/TrackerContainer";
-import css from "./page.module.css";
+import HomeContent from "@/components/HomeContent/HomeContent";
 
 export default function Home() {
   return (
-    <main className={css.main}>
-      <TrackerContainer />
+    <main>
+      <HomeContent />
     </main>
   );
 }
