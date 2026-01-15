@@ -1,0 +1,12 @@
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.formSection {
+  display: flex;
+  justify-content: center;
+}

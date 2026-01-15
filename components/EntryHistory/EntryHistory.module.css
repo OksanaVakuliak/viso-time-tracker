@@ -1,0 +1,20 @@
+.container {
+  margin-top: 20px;
+}
+
+.loaderContainer {
+  text-align: center;
+  padding: 50px;
+}
+
+.loaderText {
+  margin-top: 15px;
+}
+
+.title {
+  margin-bottom: 20px !important;
+}
+
+.emptyText {
+  display: block;
+}

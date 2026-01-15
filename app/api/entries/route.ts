@@ -50,7 +50,10 @@ export async function POST(req: Request) {
     }
 
     const newEntry = await prisma.timeEntry.create({
-      data: validatedData,
+      data: {
+        ...validatedData,
+        date: new Date(validatedData.date),
+      },
     });
 
     return NextResponse.json(newEntry);

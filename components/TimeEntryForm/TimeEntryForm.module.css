@@ -1,0 +1,13 @@
+.card {
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.title {
+  margin-bottom: 24px !important;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
