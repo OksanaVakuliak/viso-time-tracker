@@ -28,20 +28,27 @@ A modern, full-stack internal tool designed for efficient time tracking, project
    ```bash
    git clone [https://github.com/OksanaVakuliak/viso-time-tracker](https://github.com/OksanaVakuliak/viso-time-tracker)
    cd viso-time-tracker
-   Install dependencies:
+
    ```
 
-2. **Bash**
+2. Install dependencies:
+
+   ```bash
    npm install
-   Setup the database:
+   ```
 
-3. **Bash**
-   npx prisma migrate dev --name init
-   Run the development server:
+3. **Setup the database:**
 
-4. **Bash**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+4. **Run the development server:**
+   ```bash
    npm run dev
    Open http://localhost:3000 with your browser to see the result.
+   ```
 
 ## 🏗️ Architecture
 
